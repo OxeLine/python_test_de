@@ -1,0 +1,35 @@
+Première partie du test.
+
+Requête SQL permettant de trouver le chiffre d'affaires, jour par jour,
+du 1er Janvier 2019 au 31 décembre 2019. Résultat trié sur la date.
+
+SELECT "date", SUM("prod_price" * "prod_qty") AS "ventes" FROM "transaction"
+WHERE "date" BETWEEN "2019-01-01" AND "2019-12-31" GROUP BY "date"
+
+
+
+Seconde partie du test.
+
+Requête SQL qui permet de déterminer, par client et sur la période allant
+du 1er Janvier 2019 au 31 décembre 2019, les ventes meuble et déco réalisées.
+
+SELECT "client_id", "ventes_meuble", "ventes_deco"
+FROM (
+  SELECT "client_id", "ventes_meuble", "ventes_deco"
+  from (
+    SELECT "client_id", SUM("prod_price" * "prod_qty") AS "ventes_meuble"
+    FROM "transaction"
+    INNER JOIN "product_nomenclature" ON "transaction"."prop_id" == "product_nomenclature"."product_id" AND "product_nomenclature"."product_type" == "MEUBLE"
+    WHERE "date" BETWEEN "2019-01-01" AND "2019-12-31"
+    GROUP BY "client_id"
+  )
+  UNION ALL
+  SELECT "client_id", "ventes_meuble", "ventes_deco"
+  from (
+    SELECT "client_id", SUM("prod_price" * "prod_qty") AS "ventes_deco"
+    FROM "transaction"
+    INNER JOIN "product_nomenclature" ON "transaction"."prop_id" == "product_nomenclature"."product_id" AND "product_nomenclature"."product_type" == "DECO"
+    WHERE "date" BETWEEN "2019-01-01" AND "2019-12-31"
+    GROUP BY "client_id"
+  )
+ )
