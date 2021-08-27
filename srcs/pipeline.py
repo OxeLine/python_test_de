@@ -127,6 +127,7 @@ def save_json(result_json: dict, filename: str):
     """
     with open(filename, 'w') as outfile:
         json.dump(result_json, outfile, indent=4)
+    print(F"Result saved in {filename}!")
 
 @declare.processor()
 def seek_references(stream: Iterable[pd.DataFrame]):
