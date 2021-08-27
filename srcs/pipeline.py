@@ -103,7 +103,7 @@ def add_mention(result_json: dict, found_idxs: pd.Series, df: pd.DataFrame, \
     the drug name.
     - df: pd.DataFrame. The DataFrame that contains the data to extract.
     - column_name: str. In which column of the DataFrame the search was done.
-    - pub_type: str. The type of publication (ie: pubmed, scientific, ...).
+    - pub_type: str. The type of publication (ex: pubmed, scientific, ...).
     - drug_name: str. The name of the drug.
     """
     if found_idxs.empty:
