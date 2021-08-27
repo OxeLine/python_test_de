@@ -1,0 +1,15 @@
+Q: Quels sont les éléments à considérer pour faire évoluer votre code afin
+qu'il puisse gérer de grosse volumétries de données (fichiers de plusieurs
+To ou millions de fichiers par exemple) ?
+
+A: Il faudrait considérer la quantité de mémoire que cela demanderais ainsi
+que la complexité de mon algorithme qui ne devrais pas être exponentiel.
+
+
+
+Q: Pourriez-vous décrire les modifications qu'il faudrait apporter, s'il y
+en a, pour prendre en considération de telles volumétries ?
+
+A: C'est la 1ere fois que j'utilise la library 'genpipes', je ne suis donc
+pas sur de l'utilisé parfaitement, cependant elle m'a l'air d'être parfaitement
+capable de gérer autant de données.
